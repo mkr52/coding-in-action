@@ -7,6 +7,19 @@ public class PalindromeDemo {
         System.out.println("Is the string (" + str + ") a palidrome ? " + detectPalindrome(str));
         System.out.println("Is the number (" + num + ") a palidrome ? " + detectIntPalindrome(num));
         System.out.println("Is the string (" + str + ") a palidrome ? " + detectPalindromeString(str));
+//
+        // More test cases for string
+        String[] testCases = {
+                "A man, a plan, a canal: Panama",
+                "race a car",
+                "1A@2!3 23!2@a1",
+                "No 'x' in Nixon",
+                "12321"
+        };
+
+        for (String test : testCases) {
+            System.out.println("Is the string (" + test + ") a palidrome ? " + detectPalindromeString(test));
+        }
     }
 
     public static boolean detectPalindrome(Object item) {
@@ -42,26 +55,21 @@ public class PalindromeDemo {
         return reversedNum == originalNum;
     }
 
-    public static boolean detectPalindromeString(String str) {
+    public static boolean detectPalindromeString(String s) {
 
-        // initialize first pointer
-        int left = 0;
+        int left = 0, right = s.length() - 1;
 
-        // initialize second pointer
-        int right = str.length() - 1;
-
-        // loop until the pointers meet
-        while(left < right) {
-            if(Character.toLowerCase(str.charAt(left)) != Character.toLowerCase(str.charAt(right))) {
-                return false;
-            }
-
-            // move the pointers
-            while(left < right && !Character.isLetterOrDigit(str.charAt(left))) {
+        while (left < right) {
+            while (left < right && !Character.isLetterOrDigit(s.charAt(left))) {
                 left++;
             }
-            while(left < right && !Character.isLetterOrDigit(str.charAt(right))) {
+
+            while (left < right && !Character.isLetterOrDigit(s.charAt(right))) {
                 right--;
+            }
+
+            if (Character.toLowerCase(s.charAt(left)) != Character.toLowerCase(s.charAt(right))) {
+                return false;
             }
 
             left++;
