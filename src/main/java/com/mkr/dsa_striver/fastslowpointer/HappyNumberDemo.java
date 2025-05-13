@@ -3,6 +3,7 @@ package com.mkr.dsa_striver.fastslowpointer;
 /**
  * Happy Number is a number whose sum of squares eventually reaches 1.
  * If it reaches a cycle that does not include 1, it is not a happy number.
+ * Time Complexity: O(log n), where n = number of digits in a number -> log(n) = Ceiling(O(log10(n))) ~ 2.234 = 3
  */
 public class HappyNumberDemo {
 
