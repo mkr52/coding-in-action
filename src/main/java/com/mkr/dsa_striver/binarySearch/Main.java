@@ -29,7 +29,7 @@ public class Main {
         int max = arr.length - 1;
 
         while (min <= max) {
-            int guess = (min+max)/2; // compute guess should be inside loop coz we are changing min and max
+            int guess = min + (max-min)/2; // compute guess should be inside loop coz we are changing min and max
 
             if(arr[guess] == target) {
                 return guess;
