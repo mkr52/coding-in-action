@@ -17,6 +17,7 @@ class PriceMemento {
     }
 }
 
+// Originator class
 class StoreItem {
     private int price;
     private PriceMemento memento = new PriceMemento(price);
