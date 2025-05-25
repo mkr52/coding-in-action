@@ -5,6 +5,7 @@ import java.util.List;
 
 interface FileSystemElement {
     String getName();
+    void accept(Visitor visitor);
 }
 
 class File implements FileSystemElement {
@@ -25,6 +26,11 @@ class File implements FileSystemElement {
     public int getSize() {
         return size;
     }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
 }
 
 class Directory implements FileSystemElement {
@@ -43,6 +49,39 @@ class Directory implements FileSystemElement {
     public void addElement(FileSystemElement element) {
         elements.add(element);
     }
+
+    public List<FileSystemElement> getElements() {
+        return elements;
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
+}
+
+interface Visitor {
+    void visit(File file);
+    void visit(Directory directory);
+}
+
+class CalculateSizeVisitor implements Visitor {
+    private int totalSize;
+
+    @Override
+    public void visit(File file) {
+        totalSize += file.getSize();
+    }
+
+    @Override
+    public void visit(Directory directory) {
+        directory.getElements().forEach(e -> e.accept(this));
+    }
+
+    public int getTotalSize() {
+        System.out.println("Total size: " + totalSize);
+        return totalSize;
+    }
 }
 public class VisitorDemo {
 
@@ -52,9 +91,13 @@ public class VisitorDemo {
         directory1.addElement(file1);
 
         var directory2 = new Directory(("directory2"));
-        var file2 = new File("file2.txt", 100);
+        var file2 = new File("file2.txt", 200);
         directory1.addElement(file2);
 
         directory1.addElement(directory2);
+
+        var visitor = new CalculateSizeVisitor();
+        directory1.accept(visitor);
+        visitor.getTotalSize();
     }
 }
