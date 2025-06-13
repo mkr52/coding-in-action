@@ -32,7 +32,7 @@ public class BubbleSort {
         bubbleSortAsc(arr);
         System.out.println("Bubble sort(asc): " + Arrays.toString(arr));
         bubbleSortDescEx(arr2);
-        System.out.println("Bubble sort(asc): " + Arrays.toString(arr2));
+        System.out.println("Bubble sort(desc): " + Arrays.toString(arr2));
     }
 
     public static int[] bubbleSort(int[] arr) {
