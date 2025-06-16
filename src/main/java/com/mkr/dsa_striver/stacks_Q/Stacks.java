@@ -6,6 +6,7 @@ public class Stacks {
         Stacks stack = new Stacks(4);
         stack.push(2);
         stack.push(1);
+        stack.pop();
         stack.getTop();
         stack.getHeight();
         stack.printStack();
@@ -54,5 +55,17 @@ public class Stacks {
             top = newNode; // update top to the new node
         }
         height++;
+    }
+
+    public Node pop() {
+        if(height == 0) {
+            System.out.println("Stack is empty, cannot pop.");
+            return null;
+        }
+        Node poppedNode = top; // store the current top node;
+        top = top.next;
+        poppedNode.next = null;
+        height--;
+        return poppedNode;
     }
 }
