@@ -4,6 +4,8 @@ public class Stacks {
 
     public static void main(String[] args) {
         Stacks stack = new Stacks(4);
+        stack.push(2);
+        stack.push(1);
         stack.getTop();
         stack.getHeight();
         stack.printStack();
@@ -40,5 +42,17 @@ public class Stacks {
 
     public void getHeight() {
         System.out.println("Height: " + height);
+    }
+
+    // Similar to prepend in LL
+    public void push(int value) {
+        Node newNode = new Node(value);
+        if(height == 0) {
+            top = newNode;
+        } else {
+            newNode.next = top; // link the new node to the current top
+            top = newNode; // update top to the new node
+        }
+        height++;
     }
 }
