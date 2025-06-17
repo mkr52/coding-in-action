@@ -6,6 +6,15 @@ public class Queues {
         Queues queue = new Queues(5);
         queue.enqueue(29);
         queue.enqueue(7);
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
+        queue.getFront();
+        queue.getLast();
+        queue.getLength();
+        queue.printStack();
+        System.out.println(" --- Enqueue in empty Q ---");
+        queue.enqueue(90);
         queue.getFront();
         queue.getLast();
         queue.getLength();
@@ -44,7 +53,7 @@ public class Queues {
     }
 
     public void getLast() {
-        System.out.println("Last: " + last.value);
+        System.out.println("Last: " + (last != null ? last.value : "Queue is empty"));
     }
 
     public void getLength() {
@@ -62,5 +71,22 @@ public class Queues {
             last = newNode;
         }
         length++;
+    }
+
+    public Node dequeue() {
+        if(length == 0) {
+            System.out.println("Queue is empty, cannot dequeue.");
+            return null;
+        }
+        Node temp = front;
+        if (length == 1) {
+            front = null;
+            last = null;
+        } else {
+            front = front.next;
+            temp.next = null;
+        }
+        length--;
+        return temp;
     }
 }
