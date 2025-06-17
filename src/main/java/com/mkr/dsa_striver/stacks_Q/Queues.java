@@ -4,6 +4,8 @@ public class Queues {
 
     public static void main(String[] args) {
         Queues queue = new Queues(5);
+        queue.enqueue(29);
+        queue.enqueue(7);
         queue.getFront();
         queue.getLast();
         queue.getLength();
@@ -47,5 +49,18 @@ public class Queues {
 
     public void getLength() {
         System.out.println("Length: " + length);
+    }
+
+    public void enqueue(int value) {
+        Node newNode = new Node(value);
+        if (length == 0) {
+            front = newNode;
+            last = newNode;
+        } else {
+            last.next = newNode;
+            newNode.next = null;
+            last = newNode;
+        }
+        length++;
     }
 }
