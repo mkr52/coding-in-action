@@ -4,6 +4,9 @@ public class Main {
 
     public static void main(String[] args) {
         BinarySearchTree myBST = new BinarySearchTree();
-        System.out.println("Root = " + (myBST.root != null ? myBST.root : "Null (Empty tree) !"));
+        myBST.insert(4);
+        myBST.insert(3);
+        myBST.insert(5);
+        System.out.println("Root = " + (myBST.root != null ? myBST.root.value : "Null (Empty tree) !"));
     }
 }
