@@ -12,5 +12,6 @@ public class Main {
         hashTable.set("jamun", 7);
         hashTable.printTable();
         System.out.println(hashTable.get("jamun"));
+        System.out.println(hashTable.keys());
     }
 }
