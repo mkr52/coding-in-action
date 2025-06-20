@@ -32,11 +32,11 @@ public class HashTable {
         }
     }
 
-//    private int hash(String key) {
-//        int hash = 0;
-//        for (char c : key.toCharArray()) {
-//            hash += c; // simple hash function, can be improved
-//        }
-//        return hash % size; // ensure the hash is within the bounds of the array
-//    }
+    private int hash(String key) {
+        int hash = 0;
+        for (char c : key.toCharArray()) {
+            hash += c * 23;
+        }
+        return hash % dataMap.length; // ensure the hash is within the bounds of the array
+    }
 }
