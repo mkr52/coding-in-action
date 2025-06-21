@@ -51,6 +51,7 @@ class WildTurkey implements Turkey {
     }
 }
 
+// Use composition to adapt the Turkey(adaptee) interface to the Duck interface
 class TurkeyAdapter implements Duck {
     Turkey turkey;
 
